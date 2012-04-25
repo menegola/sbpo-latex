@@ -1,52 +1,57 @@
 \documentclass[11pt]{article}
 
-\usepackage{sbpo-template}
-
-\usepackage{graphicx,url}
+\usepackage{sbpo}
+\usepackage{graphicx}
+\usepackage{url}
 
 %\usepackage[brazil]{babel}   
 \usepackage[latin1]{inputenc}  
 
-     
 \sloppy
 
 \title{Instructions for Authors of SBPO\\ Papers and Abstracts}
 
-\author{Luciana P. Nedel\inst{1}, Rafael H. Bordini\inst{2}, Flávio Rech
-  Wagner\inst{1}, Jomi F. Hübner\inst{3} }
-
-
-\address{Instituto de Informática -- Universidade Federal do Rio Grande do Sul
-  (UFRGS)\\
-  Caixa Postal 15.064 -- 91.501-970 -- Porto Alegre -- RS -- Brazil
-\nextinstitute
-  Department of Computer Science -- University of Durham\\
-  Durham, U.K.
-\nextinstitute
-  Departamento de Sistemas e Computação\\
-  Universidade Regional de Blumenal (FURB) -- Blumenau, SC -- Brazil
-  \email{\{nedel,flavio\}@inf.ufrgs.br, R.Bordini@durham.ac.uk,
-  jomi@inf.furb.br}
-}
+\author{\sbpoauthor{Luciana P. Nedel}
+                   {Instituto de Informática -- Universidade Federal do Rio Grande do Sul}
+                   {Caixa Postal 15.064 -- 91.501-970 -- Porto Alegre -- RS -- Brazil}
+                   {\email{nedel@inf.ufrgs.br}}
+        \sbpoauthor{Rafael H. Bordini}
+                   {Department of Computer Science -- University of Durham}
+                   {Durham, U.K.}
+                   {\email{R.Bordini@durham.ac.uk}}
+        \sbpoauthor{Flávio Rech}
+                   {Instituto de Informática -- Universidade Federal do Rio Grande do Sul}
+                   {Caixa Postal 15.064 -- 91.501-970 -- Porto Alegre -- RS -- Brazil}
+                   {\email{flavio@inf.ufrgs.br}}
+        \sbpoauthor{Jomi F. Hübner}
+                   {Departamento de Sistemas e Computação -- Universidade Regional de Blumenal}
+                   {Blumenau, SC -- Brazil}
+                   {\email{jomi@inf.furb.br}}}
 
 \begin{document} 
 
 \maketitle
 
-\begin{abstract}
-  This model summarizes the formatting rules for full papers accepted for inclusion ion the Proceedings of the XLI SBPO. The Abstract must have no more than 150 words Title, author names, affiliations, addresses, abstract and keywords must precisely mirror the information provided during registration. When you initially submit the paper, suppress author names, affiliations and addresses.\\
-\textbf{KEYWORDS}. First keyword. Second keyword. Last keyword. Main area (choose between those in the areas window).
+\palavrachave{Primeira palavra chave}
+\palavrachave{Segunda palavra chave}
+\palavrachave{Última palavra chave}
+\areaprincipal{Área de classificação principal (escolher uma na janela de áreas)}
 
-
-\end{abstract}
-     
 \begin{resumo} 
-  Este modelo resume as normas de formatação para os trabalhos completos a serem publicados nos Anais do XLI SBPO. O Resumo deve ter no máximo 150 palavras. Título, nomes dos autores, sua filiação e endereços, resumo e palavras-chave devem repetir fielmente o que foi informado quando o artigo foi cadastrado através do sistema JEMS. No primeiro upload, por ocasião da submissão do trabalho, exclua desta primeira página os nomes, instituições e endereços dos autores. \\
-\textbf{PALAVRAS CHAVE}. Primeira palavra chave. Segunda palavra chave. Última Palavra chave. Área de classificação principal (escolher uma na janela de áreas)
-
+  Este modelo resume as normas de formatação para os trabalhos completos a serem publicados nos Anais do XLI SBPO. O Resumo deve ter no máximo 150 palavras. Título, nomes dos autores, sua filiação e endereços, resumo e palavras-chave devem repetir fielmente o que foi informado quando o artigo foi cadastrado através do sistema JEMS. No primeiro upload, por ocasião da submissão do trabalho, exclua desta primeira página os nomes, instituições e endereços dos autores.
 \end{resumo}
 
+\keyword{First keyword}
+\keyword{Second keyword}
+\keyword{Last keyword}
+\mainarea{Main area (choose between those in the areas window)}
 
+\begin{abstract}
+  This model summarizes the formatting rules for full papers accepted for inclusion ion the Proceedings of the XLI SBPO. The Abstract must have no more than 150 words Title, author names, affiliations, addresses, abstract and keywords must precisely mirror the information provided during registration. When you initially submit the paper, suppress author names, affiliations and addresses.
+\end{abstract}
+
+\newpage
+ 
 \section{Introdução}
 
 O SBPO utilizará este ano, novamente, o sistema JEMS para a submissão de trabalhos. A primeira página dos trabalhos publicados será constituída com as informações fornecidas no formulário de submissão de trabalho do JEMS. Por isto, os nomes de \textbf{todos} os autores devem ser cadastrados nesse formulário. Os nomes  não incluídos nesse formulário não aparecerão entre os autores na programação do Simpósio nem nos Anais.
@@ -71,6 +76,6 @@ Os textos devem utilizar páginas de tamanho \textbf{A4} (29,7 x 21,0 cm) \textbf
 As citações no texto devem conter o último sobrenome do autor, seguido, entre parêntesis, do \textbf{ano da publicação}, como por exemplo \cite{knuth:84}, \cite{boulic:91}, e \cite{smith:99}. As referências no final do texto devem estar em ordem alfabética do último sobrenome do primeiro autor.
 
 \bibliographystyle{sbpo}
-\bibliography{sbpo-bib-sample}
+\bibliography{sbpo-sample}
 
 \end{document}

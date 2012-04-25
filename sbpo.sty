@@ -1,45 +1,90 @@
-% LaTeX definitions for SBPO2009
-% Adapted from SBC 2001 style Fabio Lima.
+% LaTeX definitions for SBPO
 %
-% Created by Jomi Hubner & Rafael Bordini, june 2001
-% updated march 2005
+% Updated by Bruno Menegola, April 2012.
+% Updated by Fabio Lima, April 2009.
+% Adapted from SBC 2001 style Fabio Lima.
+% Created by Jomi Hubner & Rafael Bordini, June 2001.
 
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesPackage{sbpo-template}[2001/06/09]
+\ProvidesPackage{sbpo}[2012/04/25]
 
-% margem sup 3.5 cm: há 1,5 cm para header, + 2 cm para top
-% margem inf 2.5 cm: há 1,5 cm para foot, + 1 cm para bottom
-% margem esq/dir 3 cm
+%==============================================================================
+% Main definitions
+%==============================================================================
+\RequirePackage{indentfirst}
 \RequirePackage[a4paper,top=3.3cm,left=2.9cm,right=2.9cm,bottom=2.5cm]{geometry}
 \RequirePackage[active]{srcltx }
-
 \parindent 1.27cm
 \parskip   6pt
-
 \flushbottom
 
-% captions
+%==============================================================================
+% Captions
+%==============================================================================
 \RequirePackage[bf,sf,footnotesize,indent]{caption2}
 \setlength{\captionmargin}{0.8cm}
 \renewcommand{\captionfont}{\sffamily\footnotesize\bfseries}
 \renewcommand{\captionlabeldelim}{.}
 
-% font
+%==============================================================================
+% Font
+%==============================================================================
 \RequirePackage{times}
-
 \renewcommand{\normalsize}{\@setfontsize\normalsize\@xiipt\@xivpt}
 \newcommand{\XIIIPT}{\@setfontsize\xiiipt{13}{17}}
 \newcommand{\XVIPT}{\@setfontsize\xvipt{16}{20}}
 
-% new commands
-\newcounter{instn}
-\setcounter{instn}{1}
-\newcommand{\instnum}{\arabic{instn}}
-\newcommand{\inst}[1]{\ensuremath{^#1}}
-\newcommand{\nextinstitute}{\\\mbox{}\\[-6pt] \addtocounter{instn}{1}\inst{\instnum}}
-\newcommand{\email}[1]{\\\mbox{}\\[-6pt]\footnotesize\texttt{#1}}
+%==============================================================================
+% New commands
+%==============================================================================
+\newcommand{\email}[1]{\texttt{#1}}
 \renewcommand{\and}{, }
+\newcommand{\sbpoauthor}[4]{\normalsize \textbf{#1}\\#2\\#3\\#4\par\vspace{1em}}
+\newcommand{\areaprincipal}[1]{\gdef\@resumoarea{#1}}
+\newcommand{\mainarea}[1]{\gdef\@abstractarea{#1}}
 
+%==============================================================================
+% Keywords definition (max. 10)
+%==============================================================================
+\newcounter{pccounter}
+\newcommand{\palavrachave}[1]{
+        \addtocounter{pccounter}{1}
+        \expandafter\gdef\csname pc\alph{pccounter}\endcsname{#1}
+}
+\newcommand{\@resumopc}{%
+        \@ifundefined{pca}{}{\expandafter\MakeUppercase\pca}%
+        \@ifundefined{pcb}{}{, \pcb}%
+        \@ifundefined{pcc}{}{, \pcc}%
+        \@ifundefined{pcd}{}{, \pcd}%
+        \@ifundefined{pce}{}{, \pce}%
+        \@ifundefined{pcf}{}{, \pcf}%
+        \@ifundefined{pcg}{}{, \pcg}%
+        \@ifundefined{pch}{}{, \pch}%
+        \@ifundefined{pci}{}{, \pci}%
+        \@ifundefined{pcj}{}{, \pcj}%
+}
+
+\newcounter{kwcounter}
+\newcommand{\keyword}[1]{
+        \addtocounter{kwcounter}{1}
+        \expandafter\gdef\csname keyw\alph{kwcounter}\endcsname{#1}
+}
+\newcommand{\@abstractkw}{%
+        \@ifundefined{keywa}{}{\expandafter\MakeUppercase\keywa}%
+        \@ifundefined{keywb}{}{, \keywb}%
+        \@ifundefined{keywc}{}{, \keywc}%
+        \@ifundefined{keywd}{}{, \keywd}%
+        \@ifundefined{keywe}{}{, \keywe}%
+        \@ifundefined{keywf}{}{, \keywf}%
+        \@ifundefined{keywg}{}{, \keywg}%
+        \@ifundefined{keywh}{}{, \keywh}%
+        \@ifundefined{keywi}{}{, \keywi}%
+        \@ifundefined{keywj}{}{, \keywj}%
+}
+
+%==============================================================================
+% Bibliography
+%==============================================================================
 % to avoid [...] in the bibliography
 % \item[] instead of \item[\@biblabel{#1}\hfill]
 \def\@lbibitem[#1]#2{\item[]\if@filesw
@@ -70,8 +115,9 @@
        {\@latex@warning{Empty `thebibliography' environment}}%
       \endlist}
 
-
-% itens
+%==============================================================================
+% Itens
+%==============================================================================
 \setlength\leftmargini   {1.27cm}
 \setlength\leftmargin    {\leftmargini}
 \setlength\leftmarginii  {\leftmargini}
@@ -97,8 +143,9 @@
               \parsep    \z@
               \partopsep \p@ \@plus\z@ \@minus\p@}
 
-
-% sections
+%==============================================================================
+% Sections
+%==============================================================================
 \renewcommand\section{\@startsection{section}{1}{\z@}%
                        {-6\p@ \@plus -4\p@ \@minus -4\p@}%
                        {0\p@ \@plus 4\p@ \@minus 4\p@}%
@@ -111,56 +158,37 @@
                        {\normalfont\normalsize\bfseries\boldmath
                         \rightskip=\z@ \@plus 8em\pretolerance=10000 }}
 
-\renewcommand{\thesection}{\arabic{section}}
-\renewcommand{\thesubsection}{\thesection.\arabic{subsection}}
-\renewcommand{\thesubsubsection}{\thesubsection.\arabic{subsubsection}}
+\renewcommand{\thesection}{\arabic{section}.}
+\renewcommand{\thesubsection}{\thesection.\arabic{subsection}.}
+\renewcommand{\thesubsubsection}{\thesubsection.\arabic{subsubsection}.}
 
 \RequirePackage{titlesec}
 \titlelabel{\thetitle\hspace{1ex}}
 
-% first page
-
+%==============================================================================
+% First page
+%==============================================================================
 \pagestyle{empty}
-
 \newcommand{\authortag}[1]{$^{#1}$}
-
 \def\address#1{\gdef\@address{#1}}
 
 \def\@maketitle{\newpage
- %\null % isso dava um espaco extra antes do title
- \begin{center}
-   %\vglue -6pt
-%   \vspace*{12pt}
-\vspace*{-.7cm}
-  {\XVIPT\bf\@title\par}
-   \vglue 6pt plus 3pt minus 3pt
-  {\normalsize
-   \textbf{\begin{tabular}[t]{c}\@author\end{tabular}}\par}
-   \vglue 6pt plus 3pt minus 3pt
-  {\normalsize
-   \begin{tabular}[t]{c}\inst{\instnum}\@address\end{tabular}\par}
-   \vglue 6pt plus 3pt minus 3pt
-   \end{center}\par
+    \begin{center}
+        \vspace*{-.7cm}
+        {\normalsize\bf\@title\par}
+        \vglue 6pt plus 3pt minus 3pt
+        {\normalsize\@author\par}
+        \vglue 6pt plus 3pt minus 3pt
+    \end{center}\par
 }
 \let\maketitleOLD\maketitle
 \renewcommand{\maketitle}{\maketitleOLD\thispagestyle{empty}}
 
-\renewenvironment{abstract}{%
-      \list{}{\advance\topsep by6pt\relax%\small
-      \leftmargin=0.8cm
-      \labelwidth=\z@
-      \listparindent=\z@
-      \itemindent\listparindent
-      \rightmargin\leftmargin}\item[\hskip\labelsep
-                                    \bfseries\itshape Abstract.]\itshape}%
-      {\endlist}
-
 \newenvironment{resumo}{%
-      \list{}{\advance\topsep by6pt\relax%\small
-      \leftmargin=0.8cm
-      \labelwidth=\z@
-      \listparindent=\z@
-      \itemindent\listparindent
-      \rightmargin\leftmargin}\item[\hskip\labelsep
-                                    \bfseries\itshape Resumo.]\itshape}%
-      {\endlist}
+      \begin{center}\bfseries RESUMO\end{center}\par}%
+      {\\~\\{\bfseries PALAVRAS CHAVE. \@resumopc, \@resumoarea}\par\vspace{0.5cm}}
+
+\renewenvironment{abstract}{%
+      \begin{center}\bfseries ABSTRACT\end{center}\par}%
+      {\\~\\{\bfseries KEYWORDS. \@abstractkw, \@abstractarea}}
+
