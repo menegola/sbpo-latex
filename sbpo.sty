@@ -40,8 +40,8 @@
 \newcommand{\email}[1]{\texttt{#1}}
 \renewcommand{\and}{, }
 \newcommand{\sbpoauthor}[4]{\normalsize \textbf{#1}\\#2\\#3\\#4\par\vspace{1em}}
-\newcommand{\areaprincipal}[1]{\gdef\@resumoarea{#1}}
-\newcommand{\mainarea}[1]{\gdef\@abstractarea{#1}}
+\newcommand{\areaprincipal}[1]{\gdef\resumoarea{#1}}
+\newcommand{\mainarea}[1]{\gdef\abstractarea{#1}}
 \newif\if@showauthors
 \@showauthorstrue
 \newcommand{\hideauthors}{\@showauthorsfalse}
@@ -55,7 +55,7 @@
         \expandafter\gdef\csname pc\alph{pccounter}\endcsname{#1}
 }
 \newcommand{\@resumopc}{%
-        \@ifundefined{pca}{}{\expandafter\MakeUppercase\pca}%
+        \@ifundefined{pca}{}{\pca}%
         \@ifundefined{pcb}{}{, \pcb}%
         \@ifundefined{pcc}{}{, \pcc}%
         \@ifundefined{pcd}{}{, \pcd}%
@@ -73,7 +73,7 @@
         \expandafter\gdef\csname keyw\alph{kwcounter}\endcsname{#1}
 }
 \newcommand{\@abstractkw}{%
-        \@ifundefined{keywa}{}{\expandafter\MakeUppercase\keywa}%
+        \@ifundefined{keywa}{}{\keywa}%
         \@ifundefined{keywb}{}{, \keywb}%
         \@ifundefined{keywc}{}{, \keywc}%
         \@ifundefined{keywd}{}{, \keywd}%
@@ -191,9 +191,11 @@
 
 \newenvironment{resumo}{%
       \begin{center}\bfseries RESUMO\end{center}\par}%
-      {\\~\\{\bfseries PALAVRAS CHAVE. \@resumopc, \@resumoarea}\par\vspace{0.5cm}}
+      {\\~\\{\bfseries PALAVRAS CHAVE. \@resumopc%
+        \@ifundefined{resumoarea}{}{, \resumoarea}.}\par\vspace{0.5cm}}
 
 \renewenvironment{abstract}{%
       \begin{center}\bfseries ABSTRACT\end{center}\par}%
-      {\\~\\{\bfseries KEYWORDS. \@abstractkw, \@abstractarea}}
+      {\\~\\{\bfseries KEYWORDS. \@abstractkw%
+        \@ifundefined{abstractarea}{}{, \abstractarea}.}}
 
