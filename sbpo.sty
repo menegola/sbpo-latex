@@ -42,6 +42,9 @@
 \newcommand{\sbpoauthor}[4]{\normalsize \textbf{#1}\\#2\\#3\\#4\par\vspace{1em}}
 \newcommand{\areaprincipal}[1]{\gdef\@resumoarea{#1}}
 \newcommand{\mainarea}[1]{\gdef\@abstractarea{#1}}
+\newif\if@showauthors
+\@showauthorstrue
+\newcommand{\hideauthors}{\@showauthorsfalse}
 
 %==============================================================================
 % Keywords definition (max. 10)
@@ -177,8 +180,10 @@
         \vspace*{-.7cm}
         {\normalsize\bf\@title\par}
         \vglue 6pt plus 3pt minus 3pt
-        {\normalsize\@author\par}
-        \vglue 6pt plus 3pt minus 3pt
+        \if@showauthors
+            {\normalsize\@author\par}
+            \vglue 6pt plus 3pt minus 3pt
+        \fi
     \end{center}\par
 }
 \let\maketitleOLD\maketitle
