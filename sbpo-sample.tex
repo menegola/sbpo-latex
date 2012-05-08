@@ -77,7 +77,19 @@ Os textos devem utilizar páginas de tamanho \textbf{A4} (29,7 x 21,0 cm) \textb
 
 \section{Estilo das Citações}
 
-As citações no texto devem conter o último sobrenome do autor, seguido, entre parêntesis, do \textbf{ano da publicação}, como por exemplo \cite{knuth:84}, \cite{boulic:91}, e \cite{smith:99}. As referências no final do texto devem estar em ordem alfabética do último sobrenome do primeiro autor.
+As citações no texto devem conter o último sobrenome do autor, seguido, entre parêntesis, do \textbf{ano da publicação}. As referências no final do texto devem estar em ordem alfabética do último sobrenome do primeiro autor.
+
+\paragraph{Nota do autor do estilo} -- Esse estilo é muito ruim pois
+seguidamente citamos alguém sem nos direcionarmos à obra e o texto fica
+quebrado \citet{knuth:84}.
+A solução seria colocar a citação entre parênteses (\citet{knuth:84}),
+mas ocorre um duplo parênteses ao final.
+Tomei a liberdade de atribuir ao comando \textbackslash{\texttt{cite}} o
+parênteses abrindo antes do autor por padrão \cite{knuth:84}, o que permite
+citações múltiplas \cite{knuth:84, boulic:91, smith:99} e ainda você pode
+usar o comando \textbackslash{\texttt{citet}} e outros do \texttt{natbib}
+para formatar melhor a citação, como em \citet{knuth:84}.
+ 
 
 \bibliographystyle{sbpo}
 \bibliography{sbpo-sample}
