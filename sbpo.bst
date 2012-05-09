@@ -236,7 +236,7 @@ FUNCTION {format.names}
 FUNCTION {format.authors}
 { author empty$
     { "" }
-    { author format.names }
+    { "\textbf{" * author format.names * "}" }
   if$
 }
 
